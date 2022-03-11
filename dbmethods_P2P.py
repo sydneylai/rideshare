@@ -114,7 +114,7 @@ def create_drivers_passengers_table():
     else:
         print("Error! cannot create the database connection.")
 
-#Fifth, reconnect database and extract from that database
+#fifth, reconnect database and extract from that database
 
 # This would have been an API Request to my 127001 - would subscribe and get back all the passengers
 def select_all_passengers(conn):
