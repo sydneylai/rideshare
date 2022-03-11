@@ -1,4 +1,5 @@
 import sqlite3
+import logging
 from sqlite3 import Error
 
 #first create connection function
@@ -42,10 +43,10 @@ def create_driver(conn, driver):
     cur = conn.cursor()
     cur.execute(sql, driver)
     conn.commit()
-# this inserts the driver into the DB
+# this inserts the driver into the database
 
     return cur.lastrowid
-#third create a main function to create the drivers and passenger tables
+#third create a main function to create the passenger, in this example you would create a API request to publish the passenger (Decetralized matching, you create the copy and the idea is that it becomes decentralied)
 
 def create_passenger(conn, passenger):
     """
@@ -60,10 +61,10 @@ def create_passenger(conn, passenger):
     cur = conn.cursor()
     cur.execute(sql, passenger)
     conn.commit()
-# this inserts the passenger into the DB
+# this return function is a webrequest return, you would return the value of the webrequest - success!
 
     return cur.lastrowid
-#third create a main function to create the drivers and passenger tables
+#fourth create a main function to create the drivers and passenger tables
 
 def create_drivers_passengers():
     database = r"pythonsqlite.db"
@@ -100,7 +101,6 @@ def create_drivers_passengers_table():
                                     name text NOT NULL,
                                     zipcodes text NOT NULL
                                 );"""
-    # edit template into drivers passengers
     # create a database connection
     conn = create_connection(database)
 
@@ -114,9 +114,9 @@ def create_drivers_passengers_table():
     else:
         print("Error! cannot create the database connection.")
 
-#reconnect db and extract from that db
+#Fifth, reconnect database and extract from that database
 
-#run this function, and call this function as HW
+# This would have been an API Request to my 127001 - would subscribe and get back all the passengers
 def select_all_passengers(conn):
     """
     Query all rows in the passengers table
@@ -183,21 +183,17 @@ def main():
     #create_drivers_passengers() - this is redundant, does not need to be run more than once
     database = r"pythonsqlite.db"
     conn = create_connection(database)
-    #select_all_passengers(conn) - these are stepping stones to get db to work
-    #select_all_drivers(conn) - these are stepping stones to get db to work
+    #select_all_passengers(conn) - these are stepping stones to get database to work
+    #select_all_drivers(conn) - these are stepping stones to get database to work
 
     passenger_list = passengers()
-    #conn is the connection to the db
+    #conn is the connection to the database
+    logging.warning(passenger_list)
     passenger = passenger_list[1]
     #takes first passenger out of the list and calls it passenger
     message = match(passenger)
     print (message)
 main()
-    
-#load a driver into the table
-#define db file as a string
-#create a connection from that db file 
-#define driver
-#load the driver into the db by using the driver object and connections object
+
 
 
